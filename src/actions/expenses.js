@@ -11,12 +11,14 @@ import database from '../firebase/firebase'
 
 // Add expense in DB 
 export const startAddExpense = (expenseData)=>{
-    return (dispatch)=>{
+    return (dispatch, getState)=>{
+
+        const uid = getState().auth.uid
 
         // set the default expense
         const {amount = 0, note='', description='', createdAt=0}  = expenseData
         const expense = {amount, note, description, createdAt} 
-        database.ref('expenses').push(expense).then((ref)=>{
+        database.ref(`users/${uid}/expenses`).push(expense).then((ref)=>{
             dispatch(addExpense({
                 id: ref.key, 
                 ...expense
@@ -35,9 +37,9 @@ export const removeExpense = ({id} = {})=>{
 
 // Remove expense from DB
 export const startRemoveExpense = ({id} = {})=>{
-    return (dispatch)=>{
-
-        database.ref(`expenses/${id}`).remove().then(()=>{            
+    return (dispatch, getState)=>{
+        const uid = getState().auth.uid
+        database.ref(`users/${uid}/expenses/${id}`).remove().then(()=>{            
             dispatch(removeExpense({id}))            
         })
     }
@@ -55,8 +57,10 @@ export const editExpense = (id, update)=>{
 // Updae the expense in DB
 export const StartEditExpense = (id, update)=>{
 
-    return (dispatch) => {
-        return database.ref(`expenses/${id}`).update(update).then(()=>{
+    return (dispatch, getState) => {
+
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/expenses/${id}`).update(update).then(()=>{
             dispatch(editExpense(id, update))
         })
     }
@@ -73,9 +77,11 @@ export const setExpense = (expenses)=>{
 
 // Retrieve all the expenses from the DB and populate the store
 export const fetchExpenses = ()=>{
-    return function(dispatch){
+    return function(dispatch, getState){
+
+        const uid = getState().auth.uid
         // fetch all the records from the firebase 
-        return database.ref('expenses').once('value').then((dataSnapshot)=>{
+        return database.ref(`users/${uid}/expenses`).once('value').then((dataSnapshot)=>{
             const expenses = [] 
 
             dataSnapshot.forEach((childSnapShot)=>{
