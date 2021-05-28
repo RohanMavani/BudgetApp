@@ -1,0 +1,32 @@
+.header{
+    padding: .9rem 0;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.header-container{
+    background-color: #101820FF;
+}
+
+.header-title{
+    color: #F2AA4CFF;
+    text-decoration: none;
+    h1{
+        margin:0px;
+    }
+}
+
+.header-title:hover, .header-title:active{
+    text-decoration: none;
+    color: #F2AA4CFF;
+}
+
+.header-content{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: $s-size 0;
+}
+
+
+

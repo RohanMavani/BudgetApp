@@ -37,7 +37,7 @@ export const removeExpense = ({id} = {})=>{
 
 // Remove expense from DB
 export const startRemoveExpense = ({id} = {})=>{
-    return (dispatch, getState)=>{
+    return (dispatch, getState) => {
         const uid = getState().auth.uid
         database.ref(`users/${uid}/expenses/${id}`).remove().then(()=>{            
             dispatch(removeExpense({id}))            

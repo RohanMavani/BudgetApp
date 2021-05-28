@@ -3,9 +3,7 @@ import {provider,firebase} from '../firebase/firebase'
 
 export const Logoutpage = ()=>{
     return (
-        <div>
-            <button onClick={logout}>Logout</button>
-        </div>
+        <button type="button" className="logout-button" onClick={logout}>Logout</button>
     )
 }
 

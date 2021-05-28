@@ -1,15 +1,22 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {Logoutpage, Loutoutpage} from './Logout'
 
 const Header = () => {
   return(
-    <header>
-      <h1>Expensify</h1>
-      <NavLink to="/" activeClassName="is-active" exact={true}>Dashboard</NavLink>
-      <NavLink to="/create" activeClassName="is-active">Create Expense</NavLink>
-      <Logoutpage />
-    </header>
+
+  <div className="header-container">
+      <header className="header">
+        <div className="content-container"> 
+          <div className="header-content"> 
+             <Link className="header-title" to="/">
+                <h1>Expensify</h1>
+              </Link>
+              <Logoutpage />
+          </div>
+      </div>
+    </header>      
+  </div>
   )
 }
 

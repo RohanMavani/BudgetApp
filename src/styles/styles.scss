@@ -1,2 +1,14 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
 @import './base/settings';
 @import './base/base';
+@import './components/box-layout';
+@import './components/header';
+@import './components/content-container';
+@import './components/page_header';
+@import './components/button';
+@import './components/expense-filter';
+@import './components/input';
+@import './components/form';
+@import './components/expense-item';
+@import './components/visibility';
+@import './components/loader';

@@ -1,0 +1,16 @@
+.page-header{
+    background-color: $light-gray;
+    padding: 2rem 0;
+    margin-bottom:2rem ;
+}
+
+.page-header-title{
+    font-weight: 300;
+    span{
+        font-weight: bold;
+    }
+}
+
+.page_header_action{
+    margin-top: $m-size;
+}
